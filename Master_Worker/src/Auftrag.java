@@ -2,10 +2,10 @@ import java.util.ArrayList;
 
 public class Auftrag {
 
-	ArrayList aufgabe = new ArrayList<Float>();
-	ArrayList lösung = new ArrayList<Float>();
+	ArrayList<Float> aufgabe = new ArrayList<Float>();
+	ArrayList<Float> lösung = new ArrayList<Float>();
 	
-	public Auftrag(ArrayList aufgabe)
+	public Auftrag(ArrayList<Float> aufgabe)
 	{
 		this.aufgabe = aufgabe;
 	}

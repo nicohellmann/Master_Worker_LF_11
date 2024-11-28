@@ -44,9 +44,10 @@ public class Worker extends Thread{
 		List<Float> newlist1 = new ArrayList<Float>();
 		List<Float> newlist2 = new ArrayList<Float>();
 		// Es wird durch die komplette Liste durchgegangen und einzelne Elemente mit dem Pivotelement verglichen dabei wird das Pivotelement selbst nicht noch einmal hinzugefügt
-		for (int i =0;i<list.size();i++)
+		for (int i =0;i<list.size()-1;i++)
 		{
-			if(list.get(i)<pivot)
+			
+			if(list.get(i)<=pivot)
 			{
 				newlist1.add(list.get(i));
 			}
