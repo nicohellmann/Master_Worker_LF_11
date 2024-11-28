@@ -20,9 +20,14 @@ public class Main {
 		Worker m1 = new Worker(toDo);
 		System.out.println(test);
 		
-		List<Float> test2 =m1.quicksort(test);
+		//List<Float> test2 =m1.quicksort(test);
 		
-		System.out.println(test2);
+		//System.out.println(test2);
+		
+		ArrayList<Float> sdf = new ArrayList<Float>(101);
+		System.out.println(sdf.size());
+		sdf.add(100,8f);
+		System.out.println(sdf);
 	}
 
 }

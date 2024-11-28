@@ -59,6 +59,7 @@ public class Worker extends Thread{
 		re.addAll(quicksort(newlist1));
 		re.add(pivot);
 		re.addAll(quicksort(newlist2));
+		this.auftrag.zuBearbeiten.lösung.add(newlist1.size()-1,pivot);
 		return re;
 	}
 	
