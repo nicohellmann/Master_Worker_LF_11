@@ -1,18 +1,15 @@
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
+import java.util.HashMap;
 public class Auftrag {
 
 	ArrayList<Float> aufgabe ;
-	ArrayList<Float> lösung;
+	HashMap<Integer,Float> lösung;
 	public Auftrag(ArrayList<Float> aufgabe)
 	{
+		
 		this.aufgabe = aufgabe;
-		for(int i =0;i<aufgabe.size();i++)
-		{
-			this.lösung.add(null);
-		}
+		lösung = new HashMap<>();
+		
 		
 	}
 	

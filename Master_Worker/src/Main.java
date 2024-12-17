@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.List;
 import java. util.Random;
 public class Main {
 
@@ -14,15 +13,11 @@ public class Main {
 		{
 			test.add(rd.nextFloat());
 		}
+		QuickSortQueue steps = new QuickSortQueue();
 		Auftrag aufgabe = new Auftrag(test);
-		Queue toDo = new Queue(aufgabe);
-		Worker m1 = new Worker(toDo);
 		System.out.println(test);
 		
-		//List<Float> test2 =m1.quicksort(test);
-		
-		//System.out.println(test2);
-		
+		Master master = new Master(aufgabe,3,steps);
 		ArrayList<Float> sdf = new ArrayList<Float>(101);
 		System.out.println(sdf.size());
 		

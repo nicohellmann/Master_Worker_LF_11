@@ -1,48 +1,26 @@
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Queue;
 public class Worker extends Thread{
 
 	
-	Queue auftrag;
+	Master master;
 	
-	public Worker(Queue auftrag)
+	public Worker(Master master)
 	{
-		this.auftrag = auftrag;
-	}
-	List<Float> quicksort(float[] list)
-	{
-		if (list.length ==1) return change(list);
-		List<Float> re = new ArrayList<Float>();
-		float pivot = list[list.length-1];
-		
-		List<Float> newlist1 = new ArrayList<Float>();
-		List<Float> newlist2 = new ArrayList<Float>();
-		for (int i =0;i<list.length;i++)
-		{
-			if(list[i]<pivot)
-			{
-				newlist1.add(list[i]);
-			}
-			else {
-				newlist2.add(list[i]);
-			}
-		}
-		
-		return re;
+		this.master = master;
 	}
 	
-	List<Float> quicksort(List<Float> list)
+	
+	void quicksortStep(ArrayList<Float> list)
 	{
 		// Abschluss muss gesichert sein und es kann passieren dass das Pivot element das Größte oder kleinste ist und somit eine leere Liste entsteht. 
-		if (list.size() <=1) return list;
+		
 		// Rückgabewert
-		List<Float> re = new ArrayList<Float>();
+		
 		// Das Pivotelement zu welcher Basis 2 neue Listen entstehen
 		float pivot = list.get(list.size()-1);
 		// Definition der neuen Listen
-		List<Float> newlist1 = new ArrayList<Float>();
-		List<Float> newlist2 = new ArrayList<Float>();
+		ArrayList<Float> newlist1 = new ArrayList<Float>();
+		ArrayList<Float> newlist2 = new ArrayList<Float>();
 		// Es wird durch die komplette Liste durchgegangen und einzelne Elemente mit dem Pivotelement verglichen dabei wird das Pivotelement selbst nicht noch einmal hinzugefügt
 		for (int i =0;i<list.size()-1;i++)
 		{
@@ -56,21 +34,34 @@ public class Worker extends Thread{
 			}
 		}
 		// Durch rekursion wird der gesamte Prozess mit beiden neuen Listen ebenfalls durchgeführt
-		re.addAll(quicksort(newlist1));
-		re.add(pivot);
-		re.addAll(quicksort(newlist2));
-		return re;
+		this.master.addToQueue(newlist1);
+		this.master.addToQueue(newlist2);
+		int position = this.determinePosition(newlist1,pivot);
+		this.master.addToLösung(position,pivot);
+		
 	}
 	
-	List<Float> change(float[] list)
-	{	
-		List<Float> re = new ArrayList<Float>();
-		for(int i =0;i<list.length;i++)
+	synchronized int determinePosition(ArrayList<Float> list1,float value)
+	{
+		boolean found = false;
+		int position = list1.size();
+		while(found == false)
 		{
-			re.add(list[i]);
+			
+			for(int i =0;i<position;i++)
+			{
+				if(this.master.auftrag.lösung.containsKey(i)) position++;
+			}
+			if(this.master.auftrag.lösung.containsKey(position)==false) found = true; 
+			
 		}
-		return re;
+		
+		
+		return position;
 	}
+	
+	
+	
 	
 	public void run()
 	{
