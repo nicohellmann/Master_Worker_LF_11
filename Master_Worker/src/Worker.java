@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Queue;
 public class Worker extends Thread{
 
 	
@@ -34,8 +35,7 @@ public class Worker extends Thread{
 	List<Float> quicksort(List<Float> list)
 	{
 		// Abschluss muss gesichert sein und es kann passieren dass das Pivot element das Größte oder kleinste ist und somit eine leere Liste entsteht. 
-		if (list.size() ==1) return list;
-		if (list.size()==0) return list;
+		if (list.size() <=1) return list;
 		// Rückgabewert
 		List<Float> re = new ArrayList<Float>();
 		// Das Pivotelement zu welcher Basis 2 neue Listen entstehen
@@ -59,7 +59,6 @@ public class Worker extends Thread{
 		re.addAll(quicksort(newlist1));
 		re.add(pivot);
 		re.addAll(quicksort(newlist2));
-		this.auftrag.zuBearbeiten.lösung.add(newlist1.size()-1,pivot);
 		return re;
 	}
 	
@@ -77,6 +76,10 @@ public class Worker extends Thread{
 	{
 		
 	}
+	
+	
+	
+	
 	
 	
 }

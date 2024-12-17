@@ -4,7 +4,6 @@ import java. util.Random;
 public class Main {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 
 		ArrayList<Float> test = new ArrayList<Float>();
 		
@@ -26,8 +25,9 @@ public class Main {
 		
 		ArrayList<Float> sdf = new ArrayList<Float>(101);
 		System.out.println(sdf.size());
-		sdf.add(100,8f);
+		
 		System.out.println(sdf);
+		System.out.println(aufgabe.lösung.size());
 	}
 
 }
