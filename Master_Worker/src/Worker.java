@@ -45,13 +45,16 @@ public class Worker extends Thread{
 	{
 		boolean found = false;
 		int position = list1.size();
+		int newPosition = position;
 		while(found == false)
 		{
+			int counter =0;
 			
-			for(int i =0;i<position;i++)
+			for(int i =0;i<newPosition;i++)
 			{
-				if(this.master.auftrag.lösung.containsKey(i)) position++;
+				if(this.master.auftrag.lösung.containsKey(i)) counter++;
 			}
+			newPosition =position +counter;
 			if(this.master.auftrag.lösung.containsKey(position)==false) found = true; 
 			
 		}
